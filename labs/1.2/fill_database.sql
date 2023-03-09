@@ -1,4 +1,5 @@
 begin;
+--удаляем все строки
 truncate subscriptions, users, services,owners,languages;
 
 DO $$DECLARE r record;
