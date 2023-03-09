@@ -14,7 +14,7 @@ select capitalization from owners where name = 'John Doe';--1
 select capitalization from owners where name = 'John Doe';--3
 end;
 
---Lost changes
+--Lost update
 begin;
 update owners set capitalization=capitalization+1000 where name = 'John Doe';--2
 end;

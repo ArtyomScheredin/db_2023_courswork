@@ -1,6 +1,5 @@
 --Создать пользователя test и выдать ему доступ к базе данных.
-create role test login;
-alter role test login password '123';
+create user test login password '123';
 grant connect on database postgres to test;
 
 --Составить и выполнить скрипты присвоения новому пользователю

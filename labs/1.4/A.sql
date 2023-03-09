@@ -14,7 +14,7 @@ set capitalization=capitalization + 1000
 where name = 'John Doe';
 end;--2
 
---Lost changes
+--Lost update
 begin;
 update owners set capitalization=capitalization+1000 where name = 'John Doe';--1
 end;

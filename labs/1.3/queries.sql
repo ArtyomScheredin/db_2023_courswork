@@ -30,7 +30,7 @@ begin;
 DELETE
 from owners
 where owner_id in (select owner_id from services where contains_ads = true);
-select *
+select owners.owner_id, contains_ads
 from owners
          join services s on owners.owner_id = s.owner_id;
 rollback;
@@ -41,23 +41,24 @@ update users
 set balance=balance + 50510
 where language_id = 3;
 select *
-from users;
+from users where language_id=3;
 rollback;
 
 --добавляем предупреждение о том, что в сервисе содержится реклама
 begin;
 update services
-set description=concat('contains ads!\n', description)
+set description=concat('contains ads! ', description)
 where contains_ads = true;
 select description
 from services;
 rollback;
 
---добавляем предупреждение о том, что в сервисе содержится реклама
+--продлеваем подписки на 8 месяцев
 begin;
 update subscriptions
 set end_date=end_date::date + interval '8 MONTH'
 where service_id
           in (select service_id from services where owner_id=3);
-select * from subscriptions;
+select * from subscriptions where service_id
+                                      in (select service_id from services where owner_id=3);
 rollback;

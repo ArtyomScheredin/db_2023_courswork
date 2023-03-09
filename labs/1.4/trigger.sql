@@ -17,5 +17,5 @@ create or replace trigger check_positive_capitalization_trigger
 execute function check_positive_capitalization();
 
 begin;
-update owners set capitalization=-1 where owner_id=2;
+update owners set capitalization=2 where owner_id=2;
 rollback;
