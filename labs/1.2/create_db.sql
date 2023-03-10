@@ -21,7 +21,7 @@ create table if not exists services
     price        integer not null,
     owner_id     integer references owners (owner_id) on delete set null,
     language_id  integer references languages (language_id) on delete set null,
-    version      integer,
+    version         integer,
     description  text,
     contains_ads boolean
 );
